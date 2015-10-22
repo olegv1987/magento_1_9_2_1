@@ -1,0 +1,47 @@
+<?php
+//$reviews       = $this->getReviewCollection();
+$reviews       = $this->getCollection();
+$reviewViewUrl = Mage::getUrl('testimonials/index/view');
+?>
+<h2><?php echo $this->__('Testimonials') ?></h2>
+<ul>
+    <?php foreach ($reviews as $item): ?>
+        <li>
+            <h3>
+                <?php echo $item->getTitle(); ?>
+            </h3>
+
+            <p><?php echo $item->getContent(); ?></p>
+            <p><strong><?php echo $this->__('Author:') ?></strong> <?php echo $item->getCustomer(); ?></p>
+            <p>&nbsp;</p>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<?php echo $this->getPagerHtml(); ?>
+<p>&nbsp;</p>
+
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <h2><?php echo $this->__('Add new review') ?></h2>
+    <form action="<?php echo $this->getFormAction(); ?>" id="reviewForm" method="post">
+        <div class="input-box">
+            <label for="title"><?php echo $this->__('Title') ?> <span class="required">*</span></label><br />
+            <input name="title" id="title" title="<?php echo $this->__('Title') ?>" class="required-entry input-text" type="text" />
+        </div>
+
+        <div class="textarea">
+            <label for="content"><?php echo $this->__('Message') ?> <span class="required">*</span></label><br />
+            <textarea name="content" id="content" cols="30" rows="10" class="required-entry"></textarea>
+        </div>
+
+        <div class="button-set">
+            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+            <button class="form-button" type="submit"><span><?php echo $this->__('Submit') ?></span></button>
+        </div>
+    </form>
+<?php endif ?>
+
+<script type="text/javascript">
+    //< ![CDATA[
+        var reviewForm = new VarienForm('reviewForm');
+    //]]>
+</script>

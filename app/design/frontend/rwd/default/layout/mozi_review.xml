@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<layout>
+    <mozi_review_index_index>
+        <reference name="content">
+            <block type="mozi_review/review" template="mozi_review/index.phtml" />
+        </reference>
+    </mozi_review_index_index>
+</layout>

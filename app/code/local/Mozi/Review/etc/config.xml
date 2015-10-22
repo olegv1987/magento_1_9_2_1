@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<config>
+
+    <modules>
+        <Mozi_Review>
+            <version>0.0.1</version>
+        </Mozi_Review>
+    </modules>
+
+    <global>
+        <models>
+            <mozi_review>
+                <class>Mozi_Review_Model</class>
+                <resourceModel>mozi_review_resource</resourceModel>
+            </mozi_review>
+            <mozi_review_resource>
+                <class>Mozi_Review_Model_Resource</class>
+                <entities>
+                    <table_mozi_review>
+                        <table>mozi_review_entities</table>
+                    </table_mozi_review>
+                </entities>
+            </mozi_review_resource>
+        </models>
+        <resources>
+            <mozi_review_setup>
+                <setup>
+                    <module>Mozi_Review</module>
+                </setup>
+            </mozi_review_setup>
+        </resources>
+        <blocks>
+            <mozi_review>
+                <class>Mozi_Review_Block</class>
+            </mozi_review>
+        </blocks>
+        <helpers>
+            <mozi_review>
+                <class>Mozi_Review_Helper</class>
+            </mozi_review>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <mozi_review>
+                <use>standard</use>
+                <args>
+                    <module>Mozi_Review</module>
+                    <frontName>testimonials</frontName>
+                </args>
+            </mozi_review>
+        </routers>
+        <layout>
+            <updates>
+                <mozi_review>
+                    <file>mozi_review.xml</file>
+                </mozi_review>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <mozi_review_admin>
+                <use>admin</use>
+                <args>
+                    <module>Mozi_Review</module>
+                    <frontName>mozi_review_admin</frontName>
+                </args>
+            </mozi_review_admin>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <mozi_review module="mozi_review">
+                <title>Review</title>
+                <sort_order>77</sort_order>
+                <action>mozi_review_admin/adminhtml_review</action>
+            </mozi_review>
+        </menu>
+    </adminhtml>
+
+</config>
